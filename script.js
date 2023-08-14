@@ -6,5 +6,11 @@ document.getElementById('submit-btn').addEventListener('click',function(){
     // password field 
     const usersPassword=document.getElementById('user-password')
     const password=usersPassword.value;
-    console.log('password')
+//   verify email and password 
+if (email==="mohosin2126@gmail.com" && password=='secret'){
+   window.location.href="http://127.0.0.1:5500/bank-dashboard.html"
+}
+else{
+    alert("invalid user email and password . please enter the right user name and password !!")
+}
 })
