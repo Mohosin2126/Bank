@@ -34,6 +34,14 @@ document.getElementById('withdraw-btn').addEventListener('click',function(){
   const withdrawField= document.getElementById('withdraw-field')
   const newWithdrawAmountString =  withdrawField.value;
   const newWithdrawAmount=parseFloat(newWithdrawAmountString)
+  // clear the input field 
+withdrawField.value=''
+  
+  if (isNaN(newWithdrawAmount)){
+    alert('Provide a number please ')
+    return;
+  }
+
 
 // get previous withdraw total 
 const WithdrawAmount = document.getElementById('withdraw-total')
@@ -42,20 +50,22 @@ const previousWithdrawTotalString=WithdrawAmount.innerText
 
 const previousWithdrawTotal=parseFloat(previousWithdrawTotalString)
 
-// calculate totalwithdraw amount 
-const currentWithdrawTotal= previousWithdrawTotal + 
-newWithdrawAmount
 
-
-WithdrawAmount.innerText= currentWithdrawTotal;
-
-// clear the input field 
-withdrawField.value=''
 
 // get the previous balance total 
 const blncTotalElement=document.getElementById('balance-total')
 const previousblncstring=blncTotalElement.innerText;
 const previousBlncTotal=parseFloat(previousblncstring)
+if(newWithdrawAmount>previousBlncTotal){
+  alert("Dont't have enough money ")
+  return;
+}
+//  calculate totalwithdraw amount 
+const currentWithdrawTotal= previousWithdrawTotal + 
+newWithdrawAmount
+
+
+WithdrawAmount.innerText= currentWithdrawTotal;
 
 // calculate new balance total 
 const newBlncTotal=previousBlncTotal - newWithdrawAmount;
